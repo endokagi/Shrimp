@@ -31,32 +31,48 @@ $('input[type="file"]').change(function (e) {
 });
 
 $("#start").click(function () {
+
     $("#progress").show();
     var storageRef = firebase.storage().ref();
 
     // Upload image to Firebase
-    var newImageRef = storageRef.child('upload/test.jpg');
+    var newImageRef = storageRef.child('upload/shrimp.jpg');
 
     var file = $('#photo').get(0).files[0];
     newImageRef.put(file).then(function (snapshot) {
-        
+
         console.log('Uploaded a blob or file!');
+
+        let url = "http://192.168.11.11:5000/predict";
+
         // Call prediction API
-        const url = "http://172.26.252.67:5000/predict";
+        console.log(url);
         $.getJSON(url, function (result) {
             $("#progress").hide();
             console.log(result);
-            const found = `<button id="found" type="button" class="btn btn-danger mt-3">Found</button>`;
-            const notfound = `<button id="notfound" type="button" class="btn btn-success mt-3">Not Found</button>`;
-            if(result.result){
-                $("#result").html(found)
+            const normal = `<button id="found" type="button" class="btn btn-danger mt-3">Normal</button>`;
+            const taura = `<button id="found" type="button" class="btn btn-danger mt-3">Trura</button>`;
+            const virus = `<button id="found" type="button" class="btn btn-danger mt-3">Virus</button>`;
+            const whitespot = `<button id="found" type="button" class="btn btn-danger mt-3">White Spot</button>`;
+            const yellow = `<button id="notfound" type="button" class="btn btn-success mt-3">Yellow</button>`;
+            if(result === "0"){
+                $("#result").html(normal)
+            }
+
+            else if (result === "1") {
+                $("#result").html(taura)
+            }
+            else if (result === "2") {
+                $("#result").html(virus)
+            }
+            else if (result === "3") {
+                $("#result").html(whitespot)
             }
             else{
-                $("#result").html(notfound)
+                $("#result").html(yellow)
             }
-            
+
         });
     });
 
 });
-
