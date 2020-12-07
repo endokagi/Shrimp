@@ -11,8 +11,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-
-
 $(document).on("click", ".browse", function () {
     var file = $(this).parents().find(".file");
     file.trigger("click");
@@ -50,11 +48,11 @@ $("#start").click(function () {
         $.getJSON(url, function (result) {
             $("#progress").hide();
             console.log(result);
-            const normal = `<button id="found" type="button" class="btn btn-danger mt-3">Normal</button>`;
-            const taura = `<button id="found" type="button" class="btn btn-danger mt-3">Trura</button>`;
+            const normal = `<button id="found" type="button" class="btn btn-success mt-3">Normal</button>`;
+            const taura = `<button id="found" type="button" class="btn btn-dark mt-3">Trura</button>`;
             const virus = `<button id="found" type="button" class="btn btn-danger mt-3">Virus</button>`;
-            const whitespot = `<button id="found" type="button" class="btn btn-danger mt-3">White Spot</button>`;
-            const yellow = `<button id="notfound" type="button" class="btn btn-success mt-3">Yellow</button>`;
+            const whitespot = `<button id="found" type="button" class="btn btn-secondary mt-3">White Spot</button>`;
+            const yellow = `<button id="notfound" type="button" class="btn btn-warning mt-3">Yellow</button>`;
             if(result === "0"){
                 $("#result").html(normal)
             }
@@ -75,4 +73,8 @@ $("#start").click(function () {
         });
     });
 
+});
+
+$('#reload').click(function(){
+    location.reload()
 });
