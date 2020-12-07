@@ -2,9 +2,3 @@
   visibility: hidden;
   position: absolute;
 }
-
-@media (max-width: 575.98px) {
-  .body{
-    display: flex;
-  }
-}
