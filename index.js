@@ -41,7 +41,9 @@ $("#start").click(function () {
 
         console.log('Uploaded a blob or file!');
 
-        let url = "http://192.168.11.11:5000/predict";
+        ipAddress = $('#ipAddress').val();
+
+        let url = "http://"+ipAddress+":5000/predict";
 
         // Call prediction API
         console.log(url);
