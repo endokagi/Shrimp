@@ -24,10 +24,10 @@
   </nav>
   <div class="container">
     <div class="row">
-      <div class="col-sm text-center display-5 mt-3">
+      <div class="col-sm-12 text-center display-5 mt-3">
         Please select a photo
       </div>
-      <div class="col-sm text-center">
+      <div class="col-sm-12 text-center">
         <form method="post" id="image-form">
           <input type="file" name="img[]" id="photo" class="file" accept="image/*" />
           <div class="input-group my-3">
@@ -47,13 +47,14 @@
       </div>
     </div>
     <div class="row text-center mt-3">
-      <div class="input-group mb-3 col">
+      <div class="input-group mb-3 col-sm-12">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">IP Address </span>
+          <span class="input-group-text" id="inputGroup-sizing-default">IP Address</span>
         </div>
-        <input type="text" id="ipAddress" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        <input type="text" id="ipAddress" class="form-control" aria-label="Default"
+          aria-describedby="inputGroup-sizing-default">
       </div>
-      <div class="col-sm">
+      <div class="col-sm-12">
         <button type="button" id="start" class="btn btn-success">Start Detection</button>
       </div>
     </div>
