@@ -43,7 +43,7 @@ $("#start").click(function () {
 
         ipAddress = $('#ipAddress').val();
 
-        let url = "http://"+ipAddress+":5000/predict";
+        let url = "http://" + ipAddress + ":5000/predict";
 
         // Call prediction API
         console.log(url);
@@ -51,25 +51,26 @@ $("#start").click(function () {
             $("#progress").hide();
             console.log(result);
             const normal = `<button id="found" type="button" class="btn btn-success mt-3">Normal</button>`;
-            const taura = `<button id="found" type="button" class="btn btn-dark mt-3">Trura</button>`;
-            const virus = `<button id="found" type="button" class="btn btn-danger mt-3">Virus</button>`;
+            const taura = `<button id="found" type="button" class="btn btn-dark mt-3">Trura Syndrome</button>`;
+            const virus = `<button id="found" type="button" class="btn btn-danger mt-3">Infectious myonecrosis virus</button>`;
             const whitespot = `<button id="found" type="button" class="btn btn-secondary mt-3">White Spot</button>`;
-            const yellow = `<button id="notfound" type="button" class="btn btn-warning mt-3">Yellow</button>`;
-            if(result === "0"){
+            const yellow = `<button id="notfound" type="button" class="btn btn-warning mt-3">Yellow head</button>`;
+            if (result.result == "normal") {
                 $("#result").html(normal)
             }
 
-            else if (result === "1") {
+            else if (result.result == "trara") {
                 $("#result").html(taura)
             }
-            else if (result === "2") {
+            else if (result.result == "virus") {
                 $("#result").html(virus)
             }
-            else if (result === "3") {
+            else if (result.result == "whitespot") {
                 $("#result").html(whitespot)
             }
-            else{
+            else {
                 $("#result").html(yellow)
+                console.log(result.result);
             }
 
         });
@@ -77,6 +78,6 @@ $("#start").click(function () {
 
 });
 
-$('#reload').click(function(){
+$('#reload').click(function () {
     location.reload()
 });
